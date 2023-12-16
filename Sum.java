@@ -9,5 +9,19 @@ public class Sum {
     }
 
     System.out.println(sum);
+
+    difference();
+  }
+
+  public static void difference() {
+        int[] numbers = { 2, 6, 7, 4, 90, 78 };
+        int dif=1000;
+
+        for(int number=0; number < numbers.length; number++)
+        {
+            dif -=  numbers[number];
+        }
+
+        System.out.println(dif);
   }
 }
