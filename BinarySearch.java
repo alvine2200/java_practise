@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class BinarySearch {
 
@@ -8,7 +10,7 @@ public class BinarySearch {
     // the search continues in the lower half; otherwise, it continues in the upper half.
     // This process continues until the value is found or the interval is empty.
     public static void main(String[] args) {
-        int result = binarySearchInteger();
+        int result = binarySearchStringArray();
         if (result != -1) {
             System.out.println("Target found at index: " + result);
         } else {
@@ -42,36 +44,69 @@ public class BinarySearch {
 
 
 
-//    public static int binarySearch(String[] arr, String target) {
-//        int low = 0, high = arr.length - 1;
-//
-//        while (low <= high) {
-//            int mid = low + (high - low) / 2;
-//
-//            int comparison = arr[mid].compareTo(target);
-//            if (comparison == 0) {
-//                return mid; // Target found
-//            } else if (comparison < 0) {
-//                low = mid + 1; // Search in the right half
-//            } else {
-//                high = mid - 1; // Search in the left half
-//            }
-//        }
-//        return -1; // Target not found
-//    }
-//
-//    public static void main(String[] args) {
-//        String[] arr = {"apple", "banana", "cherry", "date", "fig", "grape"};
-//        String target = "cherry";
-//
-//        int result = binarySearch(arr, target);
-//        if (result != -1) {
-//            System.out.println("Element found at index: " + result);
-//        } else {
-//            System.out.println("Element not found.");
-//        }
-//    }
+    public static int binarySearchStringArray() {
+        String[] arr = {"apple", "banana", "cherry", "date", "fig", "grape"};
+        String target = "cherry";
 
+        int low = 0;
+        int high = arr.length - 1;
+
+        while(low <= high){
+            int mid = low + (high - low) / 2;
+            int comparison = arr[mid].compareTo(target);
+            if (comparison == 0){
+                System.out.println("found string " + arr[mid]);
+                return mid;
+            }else if (comparison < 1){
+                low = mid + 1;
+            }else{
+                high = mid - 1;
+            }
+        }
+        return -1;
+    }
+
+
+    public static int binarySearch() {
+        int[] numbers = {9,1,7,3,4,2,8,6,12};
+        int target = 6;
+
+        int low = 0;
+        int high = numbers.length - 1;
+
+        Arrays.sort(numbers);
+        System.out.println("Sorted Arrays " + Arrays.toString(numbers));
+        System.out.println("Count Number of Arrays " + Arrays.stream(numbers).toArray().length);
+        System.out.println("Sum of Array Values " + Arrays.stream(numbers).sum());
+
+        while (low <= high){
+            int mid = low + (high - low) / 2;
+            if (numbers[mid] == target){
+                System.out.println("Target found is : " + numbers[mid]);
+                return numbers[mid];
+            }else if (numbers[mid] < target){
+                low = mid + 1;  //search in right half
+            }else{
+                high = mid - 1;  //search in left half
+            }
+        }
+
+        return -1;
+    }
+
+    public static List<Integer> linearSearch(){
+        int[] numbers = {9,1,6,3,6,2,8,6,12};
+        int target = 6;
+        List<Integer> foundNumbers = new ArrayList<>();
+
+        for (int i = 0; i < numbers.length; i++){
+            if (numbers[i] == target){
+                System.out.println();
+                foundNumbers.add(numbers[i]);
+            }
+        }
+        return foundNumbers;
+    }
 
 
 }
